@@ -1,6 +1,4 @@
-<a class="item">
-    Sala
-</a>
+<%= link_to "Sala", root_path, class:'item' %>
 <a class="item">
     Mensajes
 </a>
@@ -9,7 +7,7 @@
         Cuenta <i class="dropdown icon"></i>
         <div class="menu">
             <a class="item">Cerrar sesion</a>
-            <a class="item">Iniciar sesion</a>
+            <%= link_to "Iniciar sesion", login_path, class:'item' %>
             <a class="item">Registrate</a>
         </div>
     </div>
