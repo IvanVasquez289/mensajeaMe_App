@@ -9,8 +9,31 @@
 
 <div class="ui placeholder segment">
   <div class="ui two column very relaxed stackable grid">
-    <div class="column">
-      <div class="ui form">
+  <div class="column">
+      <%= form_with(scope: :session, url: login_path, class:"ui form", local: true) do |f| %>
+        <div class="field">
+          <%# cualquiera de las dos funciona %>
+          <%# <%= f.label :username, "Nombre de usuario" %>
+          <%= f.label :usuario%>
+          <div class="ui left icon input">
+            <%= f.text_field :username, placeholder:"Nombre de usuario" %>
+            <i class="user icon"></i>
+          </div>
+        </div>
+
+        <div class="field">
+          <%# es opcional el 2do password, el label automaticamente le pone letra capital, usa la2da opcion cuando es mas de 1 palabra %>
+          <%= f.label :password, 'Password' %>
+          <div class="ui left icon input">
+            <%= f.password_field :password, placeholder:"Contraseña"%>  
+            <i class="user icon"></i>
+          </div>
+        </div>
+
+        <%= f.submit "Iniciar sesión", class:"ui blue submit button"%>
+      <% end %>
+
+      <%# <div class="ui form">
         <div class="field">
           <label>Username</label>
           <div class="ui left icon input">
@@ -26,7 +49,8 @@
           </div>
         </div>
         <div class="ui blue submit button">Login</div>
-      </div>
+      </div> %>
+  
     </div>
     <div class="middle aligned column">
       <div class="ui big button">
