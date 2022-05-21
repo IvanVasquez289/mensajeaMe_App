@@ -1,4 +1,5 @@
 class SessionsController < ApplicationController
+  before_action :logged_in_redirect, only: [:create, :new]
   def new
     
   end
@@ -20,5 +21,14 @@ class SessionsController < ApplicationController
     session[:user_id] = nil
     flash[:success] = "Se ha cerrado la sesión"
     redirect_to login_path
+  end
+
+  private
+
+  def logged_in_redirect
+    if logged_in?
+      flash[:error] = 'Ya has iniciado sesion'
+      redirect_to root_path
+    end
   end
 end 
