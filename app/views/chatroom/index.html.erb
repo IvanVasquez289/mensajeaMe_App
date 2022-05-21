@@ -16,7 +16,16 @@
             </div>
 
             <div class="extra content">
-                <form class="ui reply form">
+                <%= form_with(model: @message, url: message_path, class:"ui reply form", local: true) do |f| %>
+                    <div class="field">
+                        <div class="ui blue fluid icon input">
+                            <%= f.text_field :body, placeholder:'Escribe un mensaje...' %>
+                            <%= f.button '<i class="bordered inverted blue icon edit"></i>'.html_safe %>
+                            <%# <i class="bordered inverted blue icon edit"></i> %>
+                        </div>
+                    </div>
+                <% end %>
+                <%# <form class="ui reply form">
                     <div class="field">
                         <div class="ui blue fluid icon input">
                              <input type="text" placeholder="Escribe un mensaje...">
@@ -24,7 +33,7 @@
                         </div>
                     </div>
                    
-                </form>
+                </form> %>
             </div>
 
         </div>
