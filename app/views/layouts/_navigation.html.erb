@@ -6,12 +6,19 @@
     <div class="ui dropdown item">
         Cuenta <i class="dropdown icon"></i>
         <div class="menu">
-            <a class="item">Cerrar sesion</a>
-            <%= link_to "Iniciar sesion", login_path, class:'item' %>
-            <a class="item">Registrate</a>
+            
+            <% if logged_in? %>
+                <%= link_to "Cerrar sesión", logout_path, class:"item" , method: :delete, data: { confirm: 'Estas seguro?' } %>
+            <% else %>
+                <%= link_to "Iniciar sesion", login_path, class:'item' %>
+            <% end %>
+            
         </div>
     </div>
-    <div class="item">
-        <div class="ui primary button">Sign Up</div>
-    </div>
+    <% if !logged_in? %>
+        <div class="item">
+            <%= link_to "Registrate", login_path, class:'ui primary button' %>
+            <%# <div class="ui primary button">Registrate</div> %>
+        </div>   
+    <% end %>
 </div> 
