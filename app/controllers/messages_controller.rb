@@ -5,7 +5,9 @@ class MessagesController < ApplicationController
  
     @message.user = current_user
     if @message.save
-      redirect_to root_path
+      # redirect_to root_path esto es lo que actualiza nuestra page
+      ActionCable.server.broadcast 'chatroom_channel',
+                                  {foo: @message.body}
     else 
       render 'new'
     end
