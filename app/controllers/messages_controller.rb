@@ -7,7 +7,7 @@ class MessagesController < ApplicationController
     if @message.save
       # redirect_to root_path esto es lo que actualiza nuestra page
       ActionCable.server.broadcast 'chatroom_channel',
-                                  {foo: @message.body}
+            {nuevo_mensaje: message_render(@message)}
     else 
       render 'new'
     end
@@ -18,5 +18,9 @@ class MessagesController < ApplicationController
 
   def message_params
     params.require(:message).permit(:body)
+  end
+
+  def message_render(message)
+    render(partial: 'message', locals: {message: message})
   end
 end

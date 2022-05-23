@@ -10,13 +10,14 @@
     <div class="ten wide column">
          <div class="ui card fluid raised card chat">
             <div class="content">
-                <div class="ui feed">
+                <div class="ui feed" id='mensaje-contenedor'>
                     <%= render @messages %>
                 </div>
             </div>
 
             <div class="extra content">
-                <%= form_with(model: @message, url: message_path, class:"ui reply form", local: true) do |f| %>
+                <%= form_for(@message, html: {class: "ui reply form", role: "form"}, url: message_path, method: "POST", remote: true) do |f| %>
+
                     <div class="field">
                         <div class="ui blue fluid icon input">
                             <%= f.text_field :body, placeholder:'Escribe un mensaje...' %>
