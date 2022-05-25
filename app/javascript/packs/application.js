@@ -8,11 +8,19 @@ import Turbolinks from "turbolinks"
 import * as ActiveStorage from "@rails/activestorage"
 import "channels"
 
+
+window.scroll_bottom = function(){
+  if ($('#mensajez').length > 0) {
+    $('#mensajez').scrollTop($('#mensajez')[0].scrollHeight);
+  }
+}
+
 document.addEventListener('turbolinks:load', () => {
     $('.ui.dropdown').dropdown()
     $('.message .close').on('click', function() {
         $(this).closest('.message').transition('fade');
       });
+    scroll_bottom();
 })
 
 

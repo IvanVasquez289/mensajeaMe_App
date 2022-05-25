@@ -1,5 +1,4 @@
 import consumer from "./consumer"
-
 consumer.subscriptions.create("ChatroomChannel", {
   connected() {
     // Called when the subscription is ready for use on the server
@@ -13,5 +12,6 @@ consumer.subscriptions.create("ChatroomChannel", {
     // Called when there's incoming data on the websocket for this channel
     // alert(data.foo)
     $('#mensaje-contenedor').append(data.nuevo_mensaje)
+    scroll_bottom()
   }
 });
